@@ -1,6 +1,6 @@
 # EarlyUser Mailer
 
-**EarlyUser Mailer** is a simple tool used internally at TailTag to send emails to early users, offering them free lifetime access to our premium subscription, **TailTag Pro**. This utility leverages **Nodemailer** and **Gmail SMTP** to handle email sending tasks. It's designed to be a straightforward, customizable way to distribute important messages to a list of recipients.
+**EarlyUser Mailer** is a simple tool used internally at TailTag to send emails to early users, offering them free lifetime access to our premium subscription, **TailTag Pro**. This utility leverages **Nodemailer** and **Gmail SMTP** to handle email sending tasks. It's designed to be a straightforward, customizable way to distribute important messages to a list of recipients which we automatically get from our Supabase backend (based on criteria such as creation date, current subscription status, and other).
 
 ## Features
 
@@ -92,14 +92,13 @@ The `src/config.ts` file is where you configure the email content.
 Example of `src/config.ts`:
 
 ```typescript
-const recipients = ["user1@example.com", "user2@example.com"]; // List of email addresses
 const subject = "Welcome to TailTag Pro!"; // Subject of the email
 const htmlContent = `
   <h1>Welcome to TailTag Pro!</h1>
   <p>Enjoy your lifetime free access to TailTag Pro features.</p>
 `; // HTML content of your email
 
-export { recipients, subject, htmlContent };
+export { subject, htmlContent };
 ```
 
 ---
