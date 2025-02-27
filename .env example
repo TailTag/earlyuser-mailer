@@ -1,3 +1,5 @@
 GMAIL_USER=gmail-user-here
 GMAIL_PASS=gmail-pass-here
 SEND_AS_EMAIL=-send-as-email-here
+SUPABASE_URL=supabase-url-here
+SUPABASE_SERVICE_ROLE_KEY=eservice-key-here

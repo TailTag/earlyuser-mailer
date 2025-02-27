@@ -4,6 +4,8 @@
 
 ## Features
 
+- Get users from our Supabase backend automatically
+- Check their creation time & subscription state
 - Send personalized emails to multiple recipients.
 - Easily configure email content and recipient list.
 - Built-in support for HTML content in emails.
@@ -48,9 +50,11 @@ To get started with **EarlyUser Mailer**, you'll need to clone the repository an
 4. Open the `.env` file and replace the placeholders with your Gmail credentials:
 
    ```env
-   GMAIL_USER=gmail-user-here
-   GMAIL_PASS=gmail-pass-here
-   SEND_AS_EMAIL=send-as-email-here
+    GMAIL_USER=gmail-user-here
+    GMAIL_PASS=gmail-pass-here
+    SEND_AS_EMAIL=-send-as-email-here
+    SUPABASE_URL=supabase-url-here
+    SUPABASE_SERVICE_ROLE_KEY=eservice-key-here
    ```
 
 5. Set up your configuration file (`src/config.ts`) with the recipients, subject, and HTML content of the email.
@@ -66,20 +70,22 @@ In order to send emails, you need to configure the environment variables in the 
 - **GMAIL_USER**: Your Gmail username (email address).
 - **GMAIL_PASS**: The password for the Gmail account (or an App Password if you have 2FA enabled).
 - **SEND_AS_EMAIL**: The email address that will be used as the "from" address when sending the email (this can be the same as `GMAIL_USER`).
-
-Example of `.env`:
+- **SUPABASE_URL**: URL of your supabase instance
+- **SUPABASE_SERVICE_ROLE_KEY**: Service role key from supabase
+  Example of `.env`:
 
 ```env
 GMAIL_USER=gmail-user-here
 GMAIL_PASS=gmail-pass-here
-SEND_AS_EMAIL=send-as-email-here
+SEND_AS_EMAIL=-send-as-email-here
+SUPABASE_URL=supabase-url-here
+SUPABASE_SERVICE_ROLE_KEY=eservice-key-here
 ```
 
 ### Configuration File
 
-The `src/config.ts` file is where you configure the email content and recipients.
+The `src/config.ts` file is where you configure the email content.
 
-- **recipients**: An array of email addresses that the emails will be sent to.
 - **subject**: The subject line of the email.
 - **htmlContent**: The HTML content of the email.
 
@@ -117,7 +123,8 @@ This will initiate the email sending process, using the provided email content a
 
 1. **Environment Setup**: The tool loads your Gmail credentials and the email "from" address from the `.env` file. It uses these credentials to authenticate with Gmail's SMTP service.
 2. **Configuration**: The email content (subject and HTML body) and recipient list are set up in `src/config.ts`.
-3. **Sending Emails**: The tool uses Nodemailer to send the email. It loops through the recipient list, sending each one the same email with the configured subject and HTML content.
+3. **Getting Recipients**: Connect to the Supabase to get users, sort them by specefic criteria to get out recepient list.
+4. **Sending Emails**: The tool uses Nodemailer to send the email. It loops through the recipient list, sending each one the same email with the configured subject and HTML content.
 
 The `sendEmailsToRecipients` function calls `sendEmail`, which in turn uses Gmail's SMTP service to send the email.
 
@@ -151,12 +158,6 @@ We welcome contributions to this project! If you have any improvements, bug fixe
 We look forward to your contributions!
 
 ---
-
-## Planned Features
-
-1. Get users from our Supabase backend automatically
-2. Check their creation time & subscription state
-3. Send them an email if they fit various criteria.
 
 ## License
 

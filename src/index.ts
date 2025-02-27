@@ -1,6 +1,7 @@
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
-import { recipients, subject, htmlContent } from "./config";
+import { subject, htmlContent } from "./config";
+import getEarlyUserEmails from "./fetchEarlyUsers";
 
 // Load env vars
 dotenv.config();
@@ -61,6 +62,8 @@ async function sendEmailsToRecipients(
  * It utilizes the sendEmailsToRecipients function to handle the email sending logic.
  */
 async function main() {
+  // Get emails of early users from Supabase
+  const recipients = await getEarlyUserEmails();
   await sendEmailsToRecipients(recipients, subject, htmlContent);
 }
 

@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/TailTag/earlyuser-mailer#readme",
   "dependencies": {
+    "@supabase/supabase-js": "^2.49.1",
+    "axios": "^1.8.1",
     "dotenv": "^16.4.7",
     "nodemailer": "^6.10.0"
   },
