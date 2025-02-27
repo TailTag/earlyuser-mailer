@@ -1,0 +1,30 @@
+{
+  "name": "earlyuser-mailer",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Contains a very simple NodeJS application which will send a mail to early users, giving them access to TailTag Pro",
+  "main": "src/index.ts",
+  "scripts": {
+    "send": "npx tsx src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TailTag/earlyuser-mailer.git"
+  },
+  "author": "tailtag",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TailTag/earlyuser-mailer/issues"
+  },
+  "homepage": "https://github.com/TailTag/earlyuser-mailer#readme",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "nodemailer": "^6.10.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.5",
+    "@types/nodemailer": "^6.4.17",
+    "typescript": "^5.7.3"
+  }
+}
